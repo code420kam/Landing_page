@@ -10,7 +10,7 @@ const isInViewport = function (activeSection)
     
 	const distance = activeSection.getBoundingClientRect;    
     return(
-        activeSection.top = (document.body.scrollHeight)
+        activeSection.top = (window.innerHeight)
         
     )
 };
