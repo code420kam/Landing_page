@@ -1,17 +1,18 @@
 
 
-const activeSection = document.getElementsByClassName(".your-active-class");
+const activeSection = document.getElementsByClassName("your-active-class")
+console.log(activeSection);
 
-console.log(distance);
 
-var isInViewport = function (activeSection) 
+
+const isInViewport = function (activeSection) 
 {
-
-	const distance = activeSection.getBoundingClientRect()
-	return (
-		distance.top > 0 &&
-		distance.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-	);    
+    
+	const distance = activeSection.getBoundingClientRect;    
+    return(
+        activeSection.top = (document.body.scrollHeight)
+        
+    )
 };
 
 window.addEventListener('scroll', function () 
