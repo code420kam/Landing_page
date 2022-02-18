@@ -203,7 +203,8 @@ section.your-active-class .landing__container::after {
 }
 #navbar__list .your-active-class 
 {
-background-color: #f60;
+background-color: skyblue;
+border-radius: 10%;
 }
 
 /* Section Active Styles Keyframe Animations */

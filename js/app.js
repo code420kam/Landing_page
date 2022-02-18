@@ -1,7 +1,5 @@
 
 
-
-
 var activeSection = document.querySelector(".your-active-class")
 const allSectors = document.querySelectorAll("section")
 
@@ -50,12 +48,14 @@ window.onscroll = function(e) {
 
     window.addEventListener('scroll', function () 
   {
+      const checker = this.document.querySelectorAll("#navList");
       for(var i=0; i<allSectors.length; i++)
       {
           if (!isInViewport(allSectors[i]))
         {
            true;
            allSectors[i].classList.remove("your-active-class");
+           checker[i].classList.remove("your-active-class");
           console.log('In viewport!');
           
           
@@ -63,16 +63,12 @@ window.onscroll = function(e) {
       else
     {
         allSectors[i].classList.add("your-active-class");
+        checker[i].classList.add("your-active-class");
         //this.event.preventDefault();
-        
         console.log('Nope...');
                }
     }
   })
-
-  
-
-//document.querySelector(".navbar__menu").getElementsByClassName("your-active-class").style="backgroundColor:red";
 
 
 function NavBar ()
@@ -81,6 +77,7 @@ function NavBar ()
 	for (let i = 0; i < section.length; i++)
      {	
 		const li = document.createElement('li');
+        li.setAttribute("id", "navList");
 		const tag = document.createElement('a');	
 		const sectionName = section[i].getAttribute('data-nav');
         const sectionClass = section[i].getAttribute("class");
@@ -96,5 +93,6 @@ function NavBar ()
 		});
 	};
 }
+
 
 
