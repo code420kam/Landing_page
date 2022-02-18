@@ -7,12 +7,6 @@ body {
     color: #fff;
 }
 
-#test
-{
-width: 50%;
-height: 50%;
-}
-
 
 /* Typeography General*/
 h1 {
@@ -190,7 +184,6 @@ section:nth-of-type(3n + 1) .landing__container::after {
     transition: ease 0.5s all;
 }
 
-
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
 /* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
@@ -207,6 +200,10 @@ section.your-active-class .landing__container::before {
 section.your-active-class .landing__container::after {
     opacity: 1;
     animation: rotate 5s linear 0s infinite forwards reverse;
+}
+#navbar__list .your-active-class 
+{
+background-color: #f60;
 }
 
 /* Section Active Styles Keyframe Animations */
