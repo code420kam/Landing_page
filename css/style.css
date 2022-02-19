@@ -201,7 +201,16 @@ section.your-active-class .landing__container::after {
     opacity: 1;
     animation: rotate 5s linear 0s infinite forwards reverse;
 }
-#navbar__list .your-active-class 
+#navList a:link, a:visited
+{
+    text-decoration: none;
+}
+#navList:hover
+{
+    background-color: yellow;
+    color:skyblue;
+}
+#navbar__list .your-active-class
 {
 background-color: skyblue;
 border-radius: 10%;
