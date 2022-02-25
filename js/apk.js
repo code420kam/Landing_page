@@ -25,6 +25,9 @@
 var activeSection = document.querySelector(".your-active-class")
 const allSectors = document.querySelectorAll("section")
 let userHasScrolled = false;  
+const sections = document.querySelectorAll("section");
+var el = document.body.querySelectorAll("section");
+const viewportHeight = window.innerHeight;
 
 /**
  * End Global Variables
@@ -51,6 +54,7 @@ window.onscroll = function(e) {
     }
   }
 
+  
 
 
 /**
@@ -64,11 +68,15 @@ function isInViewport(el)
 {
     const rect = el.getBoundingClientRect();
     return(
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth));
+        rect.top <= 140 &&
+        rect.bottom >= 100
+    )
 }
+
+  // Make sections active
+document.addEventListener("scroll", function() {
+    makeActive();
+  });
 
 /**
  * End Main Functions
@@ -77,9 +85,48 @@ function isInViewport(el)
 */
 
 // Build menu 
-function NavBar ()
+
+window.addEventListener("load", function()
 {
 	const section = document.querySelectorAll('section');
+  function NavBar ()
+{
+  const bar = document.getElementById("navbar__list");
+  const elem = document.createElement("ul");
+  const container = document.createElement("div");
+  container.setAttribute("id", "conti");
+  container.setAttribute("class", "closeResponsiveNavBar");
+  bar.appendChild(container);
+  elem.setAttribute("class", "fa fa-bars");
+  elem.innerHTML = "Navigation"
+  elem.setAttribute("id", "responsiveMenu");
+  bar.appendChild(elem);
+  
+  elem.addEventListener("click", function()
+  {
+    if(container.classList.contains("closeResponsiveNavBar"))
+    {
+      container.classList.remove("closeResponsiveNavBar");
+      container.classList.add("openResponsiveNavBar");
+    }
+    else
+    {
+      container.classList.remove("openResponsiveNavBar");
+      container.classList.add("closeResponsiveNavBar");
+    }
+  });
+  
+  // Hide the Navbar again..
+  document.querySelector("main").addEventListener("click", function()
+  {
+    container.classList.remove("openResponsiveNavBar");
+    container.classList.add("closeResponsiveNavBar");
+  })
+
+}
+
+NavBar();
+
 	for (let i = 0; i < section.length; i++)
      {	
 		const li = document.createElement('li');
@@ -93,12 +140,16 @@ function NavBar ()
 		tag.innerText=sectionName;
 		li.appendChild(tag);
         console.log(tag);
-        document.getElementById("navbar__list").appendChild(li);
-		document.getElementById("linkNumber" +[i+1]).addEventListener("click", function(){
+        document.getElementById("conti").appendChild(li);
+		document.getElementById("linkNumber" +[i+1]).addEventListener("click", function()
+    {
 			Scrolling(i+1)
 		});
-	};
-}
+   
+  }});
+
+   
+
 // Scroll to section on link click
 function Scrolling (sectionI)
 {
@@ -111,9 +162,10 @@ function Scrolling (sectionI)
 		behavior: 'smooth'
 	});
 }
-// Adding event if user scroll the page for Viewport
-window.addEventListener('scroll', function () 
-{
+
+//function to activate and deactivate the class of the individual sections
+
+function makeActive () {
     const checker = this.document.querySelectorAll("#navList");
     for(var i=0; i<allSectors.length; i++)
     {
@@ -130,6 +182,21 @@ window.addEventListener('scroll', function ()
       checker[i].classList.add("your-active-class");
       //this.event.preventDefault();
       console.log('Nope...');
-             }
   }
-});
+}}
+
+//collapse sections on or off 
+
+var coll = document.getElementsByClassName("collapsible");
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
