@@ -22,11 +22,11 @@
  * Define Global Variables
  * 
 */
-var activeSection = document.querySelector(".your-active-class")
+let activeSection = document.querySelector(".your-active-class")
 const allSectors = document.querySelectorAll("section")
 let userHasScrolled = false;  
 const sections = document.querySelectorAll("section");
-var el = document.body.querySelectorAll("section");
+let el = document.body.querySelectorAll("section");
 const viewportHeight = window.innerHeight;
 
 /**
@@ -147,7 +147,7 @@ function Scrolling (sectionI)
 //function to activate and deactivate the class of the individual sections
 function makeActive () {
     const checker = this.document.querySelectorAll("#navList");
-    for(var i=0; i<allSectors.length; i++)
+    for(let i=0; i<allSectors.length; i++)
     {
         if (!isInViewport(allSectors[i]))
       {
@@ -165,11 +165,11 @@ function makeActive () {
   }
 }}
 //collapse sections on or off 
-var coll = document.getElementsByClassName("collapsible");
+let coll = document.getElementsByClassName("collapsible");
 for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
-    var content = this.nextElementSibling;
+    let content = this.nextElementSibling;
     if (content.style.display === "block") {
       content.style.display = "none";
     } else {
