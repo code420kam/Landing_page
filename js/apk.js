@@ -53,16 +53,11 @@ window.onscroll = function(e) {
         this.oldScroll = this.scrollY;
     }
   }
-
-  
-
-
 /**
  * End Helper Functions
  * Begin Main Functions
  * 
 */
-
 // build viewport
 function isInViewport(el)
 {
@@ -72,18 +67,11 @@ function isInViewport(el)
         rect.bottom >= 100
     )
 }
-
   // Make sections active
-document.addEventListener("scroll", function() {
+document.addEventListener("scroll", function()
+{
     makeActive();
-  });
-
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
+});
 // Build menu 
 
 window.addEventListener("load", function()
@@ -101,7 +89,6 @@ window.addEventListener("load", function()
   elem.innerHTML = "Navigation"
   elem.setAttribute("id", "responsiveMenu");
   bar.appendChild(elem);
-  
   elem.addEventListener("click", function()
   {
     if(container.classList.contains("closeResponsiveNavBar"))
@@ -114,57 +101,50 @@ window.addEventListener("load", function()
       container.classList.remove("openResponsiveNavBar");
       container.classList.add("closeResponsiveNavBar");
     }
-  });
-  
+  }); 
   // Hide the Navbar again..
   document.querySelector("main").addEventListener("click", function()
   {
     container.classList.remove("openResponsiveNavBar");
     container.classList.add("closeResponsiveNavBar");
   })
-
 }
-
+//Build Navigation Bar
 NavBar();
-
 	for (let i = 0; i < section.length; i++)
      {	
 		const li = document.createElement('li');
-        li.setAttribute("id", "navList");
+    li.setAttribute("id", "navList");
 		const tag = document.createElement('a');	
 		const sectionName = section[i].getAttribute('data-nav');
-        const sectionClass = section[i].getAttribute("class");
+    const sectionClass = section[i].getAttribute("class");
 		tag.setAttribute('href',"#"+sectionName);
 		tag.setAttribute('id',"linkNumber" +[i+1]);
-        tag.setAttribute("class", sectionClass);
+    tag.setAttribute("class", sectionClass);
 		tag.innerText=sectionName;
 		li.appendChild(tag);
-        console.log(tag);
-        document.getElementById("conti").appendChild(li);
+    console.log(tag);
+    document.getElementById("conti").appendChild(li);
 		document.getElementById("linkNumber" +[i+1]).addEventListener("click", function()
     {
 			Scrolling(i+1)
 		});
    
   }});
-
-   
-
 // Scroll to section on link click
 function Scrolling (sectionI)
 {
 	const section = document.getElementById('section'+sectionI);
 	const pos = section.offsetTop;
 	//event.preventDefault();
-	window.scrollTo({
+	window.scrollTo(
+    {
 		left: 0, 
 		top: pos,
 		behavior: 'smooth'
-	});
+	  });
 }
-
 //function to activate and deactivate the class of the individual sections
-
 function makeActive () {
     const checker = this.document.querySelectorAll("#navList");
     for(var i=0; i<allSectors.length; i++)
@@ -184,11 +164,8 @@ function makeActive () {
       console.log('Nope...');
   }
 }}
-
 //collapse sections on or off 
-
 var coll = document.getElementsByClassName("collapsible");
-
 for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
